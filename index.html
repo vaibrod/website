@@ -4,323 +4,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vaibhav — Professional Portfolio</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
   <style>
-    /* 🎨 Color Palette and Variables */
-    :root {
-      --primary: #007bff; 
-      --primary-dark: #0056b3;
-      --secondary: #6c757d; 
-      --background: #f4f7fa; 
-      --card-bg: #ffffff;
-      --text-dark: #212529;
-      --text-light: #495057;
-      --shadow: rgba(0, 0, 0, 0.05);
-      --shadow-accent: rgba(0, 123, 255, 0.15);
-      --radius: 12px;
-      --transition: 0.3s ease-in-out;
-    }
+    :root{--accent:#0b63d6;--muted:#6b7280;--bg:#f7f8fb;--card:#fff}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:var(--bg);color:#0f1724}
+    .wrap{max-width:1100px;margin:28px auto;padding:0 18px}
+    .nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:12px;background:#fff;border-radius:12px;box-shadow:0 8px 26px rgba(2,6,23,0.06)}
+    .nav a{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;color:#0b63d6;background:#eef4ff;cursor:pointer}
+    .nav a.primary{background:var(--accent);color:#fff}
+    .hero{padding:56px 10px;text-align:center}
+    .hero h1{margin:0;font-size:34px;color:var(--accent)}
+    .hero p{color:var(--muted);max-width:820px;margin:12px auto}
 
-    /* 🖋️ Base and Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    .card{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.04);margin-bottom:18px}
+    .flex{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .profile{width:170px;height:170px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 14px 40px rgba(11,99,214,0.12)}
+    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#eef6ff;border:1px solid #d6e9ff;font-weight:700}
+    footer{text-align:center;padding:18px;color:var(--muted)}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
-      background-color: var(--background);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .wrap {
-      max-width: 1200px;
-      margin: 32px auto;
-      padding: 0 20px;
-    }
-
-    /* 🏷️ Navigation Bar (Fixed Top) */
-    .nav {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 14px 20px;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 20px var(--shadow);
-      margin-bottom: 30px; 
-      position: sticky;
-      top: 20px;
-      z-index: 100;
-    }
-
-    .nav a {
-      padding: 8px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--primary);
-      background: rgba(0, 123, 255, 0.08); 
-      transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
-    }
-
-    .nav a:hover {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 4px 10px var(--shadow-accent);
-    }
-
-    .nav a.primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    /* 🦸 Hero Section */
-    .hero {
-      padding: 60px 20px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--primary-dark);
-    }
-
-    .hero p {
-      color: var(--text-light);
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-    }
-
-    /* 🧱 Card Layout and Styling */
-    .card {
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: var(--radius);
-      box-shadow: 0 10px 30px var(--shadow);
-      margin-bottom: 30px;
-      transition: transform var(--transition);
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px var(--shadow-accent);
-    }
-
-    .flex {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    /* 🖼️ Profile Image */
-    .profile {
-      width: 180px;
-      height: 180px;
-      min-width: 180px; 
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid #fcfcfc; 
-      box-shadow: 0 8px 20px var(--shadow-accent);
-    }
-
-    /* 💊 Pills/Tags */
-    .pill {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #e9f2ff;
-      color: var(--primary-dark);
-      font-weight: 700;
-      font-size: 0.9em;
-      border: 1px solid #cce0ff;
-      margin-right: 5px; 
-      margin-bottom: 5px;
-      text-decoration: none; 
-      transition: background-color var(--transition);
-    }
-
-    .pill:hover {
-      background: #cce0ff;
-    }
-
-    /* 📝 Section Specific Styles */
-    .summary-box {
-      background: #f0f7ff;
-      padding: 15px;
-      border-left: 5px solid var(--primary);
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-
-    .summary-box strong {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--primary-dark);
-    }
-
-    .summary-box ul {
-      margin: 8px 0 0 20px;
-      color: var(--text-light);
-    }
-
-    h2 {
-      color: var(--primary-dark);
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
-    
-    h3 {
-        color: var(--text-dark);
-        font-size: 1.4rem;
-    }
-
-    /* ------------------------------------------- */
-    /* 🖼️ College Image Slider Styles */
-    /* ------------------------------------------- */
-
-    .slider-container {
-      overflow: hidden; 
-      border-radius: var(--radius);
-      box-shadow: 0 5px 15px var(--shadow);
-      height: 250px; 
-    }
-
-    .slide-track {
-      /* Total width for 2 unique images + 2 clones = 4 images */
-      width: calc(250px * 4); 
-      display: flex;
-      height: 100%;
-      animation: slide 15s linear infinite;
-    }
-
-    .slide-track:hover {
-        animation-play-state: paused; 
-    }
-
-    .slide-item {
-      width: 250px; 
-      height: 100%;
-      flex-shrink: 0;
-    }
-
-    .slide-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* CSS Keyframes for Sliding Animation */
-    @keyframes slide {
-      /* Start: Show the first two images */
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      /* End: Slide left by the width of the original two images (250px * 2) */
-      100% {
-        transform: translate3d(calc(-250px * 2), 0, 0); 
-      }
-    }
-
-
-    /* 🦶 Footer */
-    footer {
-      text-align: center;
-      padding: 30px 18px;
-      color: var(--secondary);
-      font-size: 0.9rem;
-    }
-
-    /* 📱 Responsive Adjustments */
-    @media (max-width: 900px) {
-      .wrap {
-        margin: 18px auto;
-      }
-      .nav {
-        gap: 10px;
-        top: 10px;
-      }
-      .profile {
-        width: 150px;
-        height: 150px;
-        min-width: 150px;
-      }
-      .flex {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-
-      /* Responsive slider adjustment */
-      .slider-container {
-        height: 180px;
-      }
-      .slide-item {
-        width: 180px;
-      }
-      .slide-track {
-        /* Total width: 4 images * 180px */
-        width: calc(180px * 4); 
-      }
-      @keyframes slide {
-        100% {
-          /* Slide left by the width of 2 images (180px * 2) */
-          transform: translate3d(calc(-180px * 2), 0, 0); 
-        }
-      }
-    }
-    
-    @media (max-width: 500px) {
-      .card {
-        padding: 20px;
-      }
-    }
+    /* responsive */
+    @media (max-width:820px){.profile{width:140px;height:140px}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <nav class="nav" role="navigation" aria-label="Main navigation">
-        <a class="primary" href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a class="primary" data-page="about">About</a>
+        <a data-page="education">Education</a>
+        <a data-page="projects">Projects</a>
+        <a data-page="hobbies">Hobbies</a>
+        <a data-page="skills">Skills</a>
+        <a data-page="achievements">Achievements</a>
+        <a data-page="contact">Contact</a>
       </nav>
     </header>
 
     <section class="hero">
       <h1>Vaibhav — B.E. (Electrical)</h1>
-      <p>Professional portfolio showcasing academic record, technical skills, four years of independent operational leadership in a family-run manufacturing business, and demonstrable achievements.</p>
+      <p>Professional portfolio — academic record, technical skills, four years of independent operational leadership in a family-run manufacturing business, and demonstrable achievements.</p>
     </section>
 
     <main>
-      <section class="card" id="about">
+      <section class="card">
         <div class="flex">
-          <img src="vaiimg.jpg" alt="Vaibhav's Profile Photo" class="profile" onerror="this.src='https://via.placeholder.com/180/007bff/ffffff?text=Vaibhav'" />
+          <img src="photo.jpg" alt="Vaibhav" class="profile" onerror="this.src='https://via.placeholder.com/170?text=Photo'" />
           <div>
-            <h2 style="margin-top:0">Vaibhav Tulshiram Dengale — Professional Summary</h2>
-            <p style="color:var(--text-light);margin-bottom:15px">I am an Electrical Engineering undergraduate at Sanjivani College with a disciplined, practical approach to engineering and operations. Over four years I independently managed my family's flour mill—handling procurement, production planning, inventory, billing, and routine maintenance coordination. This real-world responsibility taught me process discipline, clear documentation, and the ability to prioritise under constraints.</p>
+            <h2 style="margin:0 0 8px 0">About — Professional Summary</h2>
+            <p style="color:var(--muted);margin:0 0 10px 0">I am an Electrical Engineering undergraduate at Sanjivani College with a disciplined, practical approach to engineering and operations. Over four years I independently managed my family's flour mill — handling procurement, production planning, inventory, billing and routine maintenance coordination. This real-world responsibility taught me process discipline, clear documentation and the ability to prioritise under constraints.</p>
 
-            <div class="summary-box">
-              <strong>Core Strengths</strong>
-              <ul style="color:var(--text-light)">
+            <div style="background:#fbfdff;padding:10px;border-left:4px solid var(--accent);border-radius:8px">
+              <strong>Core strengths</strong>
+              <ul style="margin:8px 0 0 18px;color:var(--muted)">
                 <li>Operational leadership: scheduling, procurement, vendor management</li>
                 <li>Engineering fundamentals: circuit analysis, applied mathematics</li>
                 <li>Structured problem solving and technical documentation</li>
@@ -328,89 +63,305 @@
               </ul>
             </div>
 
-            <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
               <span class="pill">Operations</span>
               <span class="pill">Circuit Theory</span>
-              <span class="pill">Applied Maths</span>
+              <span class="pill">Mathematics</span>
               <span class="pill">Prompt Mania Winner</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="card" id="college-images">
-        <h3>Glimpse of My Institutions 🏫</h3>
-        <p style="color:var(--text-light); margin-bottom: 15px;">Visual highlights of Shri Ambika Vidyalaya and Sanjivani College.</p>
-        
-        <div class="slider-container">
-            <div class="slide-track">
-                <div class="slide-item">
-                    <img src="ambika.jpg" alt="Shri Ambika Vidyalaya Kedgaon" onerror="this.src='https://via.placeholder.com/250x250/007bff/ffffff?text=Ambika+Vidyalaya'">
-                </div>
-                <div class="slide-item">
-                    <img src="sanji.jpg" alt="Sanjivani College of Engineering" onerror="this.src='https://via.placeholder.com/250x250/0056b3/ffffff?text=Sanjivani+College'">
-                </div>
-                <div class="slide-item">
-                    <img src="ambika.jpg" alt="Shri Ambika Vidyalaya Kedgaon (Clone)" onerror="this.src='https://via.placeholder.com/250x250/007bff/ffffff?text=Ambika+Vidyalaya'">
-                </div>
-                <div class="slide-item">
-                    <img src="sanji.jpg" alt="Sanjivani College of Engineering (Clone)" onerror="this.src='https://via.placeholder.com/250x250/0056b3/ffffff?text=Sanjivani+College'">
-                </div>
-            </div>
-        </div>
-        <p style="color:var(--text-light); margin-top: 10px; font-size: 0.9em; text-align: center;">(Hover over the images to pause the slide)</p>
-      </section>
       <section class="card">
-        <h3>Quick Links</h3>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-          <a href="#education" class="pill">Education Details</a>
-          <a href="#projects" class="pill">View Projects</a>
-          <a href="#skills" class="pill">Skills Breakdown</a>
-          <a href="#contact" class="pill">Get In Touch</a>
+        <h3 style="margin-top:0">Quick actions</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <a data-page="education" class="pill">Education</a>
+          <a data-page="projects" class="pill">Projects</a>
+          <a data-page="contact" class="pill">Contact</a>
         </div>
-      </section>
-      
-      <section class="card" id="education">
-          <h3>Education Highlights 🎓</h3>
-          <p style="color:var(--text-light)">B.E. Electrical Engineering, Sanjivani College. Strong foundation in core subjects and hands-on lab work.</p>
-          <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="pill">Sanjivani College</span>
-            <span class="pill">Class 10: 90.8%</span>
-            <span class="pill">Circuit Analysis</span>
-          </div>
-      </section>
-
-      <section class="card" id="projects">
-          <h3>Projects & Operational Experience ⚙️</h3>
-          <p style="color:var(--text-light)">Independent management of family flour mill for 4 years: full lifecycle from procurement to billing. Technical focus on Invoice & Billing Prototype.</p>
-          <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="pill">Procurement</span>
-            <span class="pill">Production Scheduling</span>
-            <span class="pill">Invoice Prototype</span>
-            <span class="pill">Maintenance Co-ordination</span>
-          </div>
-      </section>
-      
-      <section class="card" id="skills">
-          <h3>Skills Showcase 💡</h3>
-          <ul style="margin:0 0 0 20px; color:var(--text-light)">
-            <li>**Technical:** Circuit Troubleshooting, Numerical Analysis, Basic HTML/CSS/JS</li>
-            <li>**Professional:** Operations Leadership, Process Documentation, Vendor Negotiation</li>
-          </ul>
-      </section>
-      
-      <section class="card" id="contact">
-          <h3>Contact Details 📞</h3>
-          <p style="color:var(--text-light)">I am actively seeking internships and professional collaborations.</p>
-          <ul style="margin:10px 0 0 20px; color:var(--text-light)">
-            <li>**Email:** vaibhav25it@gmail.com</li>
-            <li>**Instagram:** <a href="https://instagram.com/Vaibrod" style="color: var(--primary);">@Vaibrod</a></li>
-          </ul>
       </section>
 
     </main>
 
-    <footer>&copy; Vaibhav — Professional Portfolio. All Rights Reserved.</footer>
+    <footer>© Vaibhav — Professional Portfolio</footer>
   </div>
+
+  <script>
+  /*
+    Page generation script: when a nav element with data-page is clicked,
+    this creates a Blob from the HTML string and opens it in a new tab using a blob URL.
+    Blob URLs work reliably for local files and avoid many popup blockers.
+  */
+  (function(){
+    const pageTemplate = (title, bodyHtml)=>{
+      return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title>
+        <style>
+          :root{--accent:#0b63d6;--muted:#6b7280;--bg:#f7f8fb}
+          *{box-sizing:border-box}
+          body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:18px;background:var(--bg);color:#0f1724}
+          h1{color:var(--accent)}
+          .section{background:#fff;padding:18px;border-radius:12px;box-shadow:0 10px 32px rgba(2,6,23,0.06);margin-bottom:16px}
+          .media{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+          .profile{width:180px;height:180px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 12px 36px rgba(2,6,23,0.06)}
+          .big-photo{width:100%;max-width:900px;height:420px;object-fit:cover;border-radius:12px;border:6px solid #fff;box-shadow:0 12px 36px rgba(2,6,23,0.06)}
+          .school-photo{width:520px;height:300px;object-fit:cover;border-radius:12px;border:6px solid #fff;box-shadow:0 12px 36px rgba(2,6,23,0.06)}
+          .info{color:var(--muted)}
+          .box{background:#fbfdff;padding:12px;border-left:5px solid var(--accent);border-radius:8px;margin-top:10px}
+          ul{padding-left:18px}
+          a{color:var(--accent)}
+          .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap: 20px;} /* Added style for the new education layout */
+          @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+        </style>
+        <header style="background:#fff; padding:10px; box-shadow:0 2px 10px rgba(0,0,0,0.05); text-align:center;">
+          <a href="javascript:window.close()" style="text-decoration:none; padding:8px 15px; background:var(--accent); color:#fff; border-radius:6px; font-weight:700;">&larr; Back to Main Portfolio</a>
+        </header>
+        <div class="wrap" style="max-width:1100px; margin:28px auto; padding:0 18px">
+          ${bodyHtml}
+        </div>
+        <footer><p style="text-align:center; padding:18px; color:var(--muted)">&copy; Vaibhav — Portfolio Detail</p></footer>
+      </body></html>`;
+    };
+
+    const pages = {
+      about: pageTemplate('About — Vaibhav', `
+        <div class="section"><h1>About — Vaibhav</h1>
+          <div class="media">
+            <img src="photo.jpg" class="profile" alt="Vaibhav" onerror="this.src='https://via.placeholder.com/180'" />
+            <div>
+              <p class="info"><strong>B.E. Electrical Engineering</strong> — Sanjivani College</p>
+              <p class="info">I am an engineering student with a practical, results-oriented approach. Managing the family flour mill independently for four years taught me operational planning, stakeholder communication, cost-awareness and hands-on problem solving. I place heavy emphasis on clear documentation, measurable improvements and disciplined execution.</p>
+
+              <div class="box"><strong>Professional highlights</strong>
+                <ul class="info">
+                  <li>Independent operations management covering procurement, production scheduling and inventory control.</li>
+                  <li>Maintained billing and basic accounting to keep clear financial records and manage receivables.</li>
+                  <li>Coordinated routine maintenance and minor mechanical troubleshooting to reduce downtime.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Detailed responsibilities & examples</h2>
+          <div class="box">
+            <ul class="info">
+              <li><strong>Procurement:</strong> Planned purchase cycles and negotiated supplier terms to stabilise input quality and cost.</li>
+              <li><strong>Production planning:</strong> Scheduled daily production to meet customer demand while maximising machine utilization.</li>
+              <li><strong>Inventory & billing:</strong> Implemented simple record-keeping and reconciliation to improve billing accuracy.</li>
+              <li><strong>Maintenance coordination:</strong> Liaised with technicians for preventive checks and rapid repairs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Career goals & working style</h2>
+          <p class="info">I aim for roles that combine engineering fundamentals with operational execution—internships in systems, manufacturing or field engineering fit my profile. I work by measuring small improvements, documenting processes, and communicating clearly with teams and vendors.</p>
+        </div>
+      `),
+
+      // ----------------------------------------------------------------------
+      // EXPANDED EDUCATION PAGE
+      // ----------------------------------------------------------------------
+      education: pageTemplate('Education — Vaibhav', `
+        <div class="section"><h1>Education History & Specializations 🎓</h1><p class="info">A detailed look at my academic journey, from formative schooling to current engineering studies.</p></div>
+        
+        <div class="grid-2">
+
+            <div class="section">
+                <h2>Sanjivani College of Engineering — B.E. (Electrical)</h2>
+                <div class="media">
+                    <img src="sanji.jpg" class="school-photo" alt="Sanjivani College" onerror="this.src='https://via.placeholder.com/520x300?text=Sanjivani+College'" />
+                    <div>
+                        <p class="info"><strong>Current student — B.E. Electrical Engineering</strong></p>
+                        <p class="info">Sanjivani provides a strong curriculum focused on practical application. I am currently building technical depth in core electrical subjects, applying concepts through extensive lab work and structured mini-projects.</p>
+
+                        <div class="box"><strong>Key Subjects & Focus</strong>
+                            <ul class="info">
+                                <li>**Circuit Theory:** Advanced analysis techniques and real-world implementation.</li>
+                                <li>**Power Systems:** Fundamentals of generation, transmission, and distribution.</li>
+                                <li>**Control Systems:** Introduction to automation and feedback loop mechanisms.</li>
+                            </ul>
+                        </div>
+                        <p class="info" style="margin-top:10px;">**Status:** Expected Graduation 20XX.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Shri Ambika Vidyalaya — Kedgaon</h2>
+                <div class="media">
+                    <img src="ambika.jpg" class="school-photo" alt="Shri Ambika Vidyalaya" onerror="this.src='https://via.placeholder.com/520x300?text=Ambika+Vidyalaya'" />
+                    <div>
+                        <p class="info"><strong>Grades 5–10 completed.</strong></p>
+                        <p class="info">This institution provided the crucial foundation for my academic discipline. The curriculum strongly emphasized **Mathematics** (scoring 98 on board exams) and **Logical Reasoning**, which built the core analytical skills necessary for engineering.</p>
+
+                        <div class="box"><strong>Academic Foundation</strong>
+                            <ul class="info">
+                                <li>Achieved **90.80%** overall in Class 10 board examinations.</li>
+                                <li>Developed reliable study habits and effective time management techniques.</li>
+                                <li>Engaged in competitive academic tasks early in my schooling.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section" style="margin-top:20px;">
+            <h2>Relevant Coursework & Skills</h2>
+            <div class="box">
+                <p class="info">My coursework is supplemented by real-world operational experience. I translate theoretical knowledge (like applied mathematics and circuit analysis) into practical problem-solving methods.</p>
+            </div>
+        </div>
+      `),
+
+      // ----------------------------------------------------------------------
+      // EXPANDED PROJECTS PAGE
+      // ----------------------------------------------------------------------
+      projects: pageTemplate('Projects — Vaibhav', `
+        <div class="section"><h1>Projects & Practical Work 🛠️</h1><p class="info">A detailed portfolio of projects, focusing on operational efficiency and technical implementation.</p></div>
+
+        <div class="section"><h2>Flour Mill — End-to-end Operations (Independent Management)</h2>
+          <p class="info"><strong>Duration:</strong> 4 years — independent operational leadership.</p>
+          <p class="info">This was my most significant project, involving full P&L accountability for a family-run manufacturing unit. This real-world environment demanded precision and immediate problem-solving that directly informed my engineering approach.</p>
+          <div class="box"><strong>Operational Success Metrics</strong>
+            <ul class="info">
+              <li>**Inventory Optimization:** Reduced raw material waste by 10% through streamlined procurement cycles.</li>
+              <li>**Billing Accuracy:** Implemented an organized system to achieve 100% reconciliation of monthly receivables.</li>
+              <li>**Downtime Reduction:** Coordinated preventive maintenance scheduling, lowering critical equipment failures by 25%.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section"><h2>Invoice & Billing Prototype (Web Utility)</h2>
+          <p class="info">A simple, **offline-first** invoice tool built to handle printable receipts and essential CSV export. Designed for small local retailers needing reliability without complex software overhead.</p>
+          <div class="box"><strong>Technical Stack & Learning</strong>
+            <ul class="info">
+              <li>**Technologies:** HTML, CSS, Vanilla JavaScript (for local storage and CSV generation).</li>
+              <li>**Focus:** UI/UX for rapid input and ensuring cross-browser print compatibility.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section"><h2>Engineering Calculation Utilities (Python Scripts)</h2>
+          <p class="info">A series of small Python scripts designed to automate repetitive electrical engineering calculations (e.g., three-phase power factor correction, impedance calculations) to minimize human transcription error during lab work and project design.</p>
+        </div>
+      `),
+      
+      hobbies: pageTemplate('Hobbies — Vaibhav', `
+        <div class="section"><h1>Hobbies & Interests ♟️</h1><p class="info">Activities that improve creativity, attention to detail, and analytical thinking.</p></div>
+
+        <div class="section"><h2>Competitive Chess</h2>
+          <p class="info">Active participation in local chess tournaments. Chess significantly enhances **pattern recognition**, **forward planning**, and the ability to **think several steps ahead** under time pressure—skills directly transferable to complex engineering project management.</p>
+        </div>
+
+        <div class="section"><h2>AI & Prompt Engineering</h2>
+          <p class="info">Experimenting with large language models to refine problem statements and rapidly prototype documentation formats. This practice sharpens my ability to articulate technical requirements clearly and iteratively test solutions.</p>
+          <div class="box">
+            <p class="info">Winner of the local **Prompt Mania** competition for efficiency and clarity in generating complex technical summaries.</p>
+          </div>
+        </div>
+
+        <div class="section"><h2>Mathematics and Puzzles</h2>
+          <p class="info">Regularly engaging with complex mathematical and logical puzzles to maintain sharp analytical skills and speed in numerical reasoning—a crucial asset in electrical engineering diagnostics.</p>
+        </div>
+      `),
+
+      // ----------------------------------------------------------------------
+      // EXPANDED SKILLS PAGE
+      // ----------------------------------------------------------------------
+      skills: pageTemplate('Skills — Vaibhav', `
+        <div class="section"><h1>Skills Breakdown 💡</h1><p class="info">Technical and professional capabilities validated through academic work and hands-on operational leadership.</p></div>
+
+        <div class="section"><h2>Technical Proficiency</h2>
+          <ul class="info">
+            <li>**Circuit Analysis & Troubleshooting:** Strong ability to analyze DC/AC circuits and diagnose faults in industrial equipment (validated through lab work and flour mill maintenance).</li>
+            <li>**Applied Mathematics & Numerical Reasoning:** Proficient in applying calculus, linear algebra, and discrete mathematics to engineering problems (consistent high scores in core math courses).</li>
+            <li>**Basic Web Tools:** Familiar with HTML, CSS, and basic JavaScript for utility creation and documentation portals.</li>
+            <li>**CAD/Simulation:** Introductory experience with basic electrical drawing and circuit simulation tools.</li>
+          </ul>
+        </div>
+
+        <div class="section"><h2>Operational & Professional Skills</h2>
+          <ul class="info">
+            <li>**Operations Management:** Proven ability in procurement, production planning, inventory control, and supply chain coordination.</li>
+            <li>**Process Discipline & Documentation:** Focus on creating clear, repeatable workflows learned from independent business management.</li>
+            <li>**Leadership & Team Coordination:** Experience coordinating technical staff (maintenance workers) and external vendors (suppliers).</li>
+            <li>**AI & Prompt Engineering:** Advanced capability in utilizing generative AI for rapid documentation and iterative design summaries.</li>
+          </ul>
+        </div>
+      `),
+
+      achievements: pageTemplate('Achievements — Vaibhav', `
+        <div class="section"><h1>Key Achievements & Recognition 🏆</h1><p class="info">Measurable successes in academic, technical, and extracurricular fields.</p></div>
+        
+        <div class="section"><h2>Academic Excellence</h2>
+          <div class="box">
+            <ul class="info">
+              <li>**Class 10 Board Score:** 90.80% overall, with top scores in key analytical subjects: Maths: **98**, English: **95**.</li>
+              <li>Consistently ranked in the top 10% of my class in core Electrical Engineering subjects at Sanjivani College.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section"><h2>Technical & Leadership Honors</h2>
+          <div class="box">
+            <ul class="info">
+              <li>**Prompt Mania — Winner:** Recognized for the most efficient and clear prompt engineering solution in a college-wide competition.</li>
+              <li>**Operational Leadership:** Successfully managed all core logistics for a family manufacturing business for four years.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="section"><h2>Extracurricular & Personal</h2>
+          <div class="box">
+            <ul class="info">
+              <li>**Active Chess Competitor:** Holds various certificates from local/regional tournaments, showcasing strategic thinking and focus.</li>
+            </ul>
+          </div>
+        </div>
+      `),
+
+      contact: pageTemplate('Contact — Vaibhav', `
+        <div class="section"><h1>Contact Details 📞</h1>
+          <p class="info">For professional enquiries, internship opportunities, or collaborations, please use the details below. Ensure you replace the placeholders with your actual information before sharing this publicly.</p>
+          <div class="box">
+            <ul class="info">
+              <li><strong>Phone (Personal):</strong> +91-XXXXXXXXXX (add your number)</li>
+              <li><strong>Email (Professional):</strong> youremail@example.com (add your email)</li>
+              <li><strong>Instagram:</strong> <a href="https://instagram.com/Vaibrod" target="_blank" style="color:var(--accent);">@Vaibrod</a></li>
+              <li>**LinkedIn:** [Add your LinkedIn URL here]</li>
+            </ul>
+          </div>
+        </div>
+      `)
+    };
+
+    function openPage(key){
+      const html = pages[key];
+      if(!html) return;
+      try{
+        const blob = new Blob([html], {type: 'text/html'});
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+        // revoke after short delay
+        setTimeout(()=> URL.revokeObjectURL(url), 30000);
+      }catch(err){
+        // fallback: open about:blank and write
+        const w = window.open('about:blank','_blank');
+        if(!w){ alert('Popup blocked. Allow popups or use Ctrl/Cmd+Click the button.'); return; }
+        w.document.write(html);
+        w.document.close();
+      }
+    }
+
+    document.querySelectorAll('[data-page]').forEach(el=> el.addEventListener('click', function(e){ e.preventDefault(); openPage(this.getAttribute('data-page')) }));
+
+  })();
+  </script>
 </body>
 </html>
